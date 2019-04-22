@@ -20,6 +20,8 @@ func StringReverseNullTerminated(input string) string {
 	runesList := append([]rune(input), 0)
 
 	// Because this is "null-terminated", let's assume that `len` isn't available to us and calculate it.
+	// Go doesn't have pointer arithmetic, so we can't just use one pointer and keep incrementing it.
+	// Let's index into the array and pretend we're incrementing the pointer.
 	length := 0
 	currentRune := runesList[length]
 	for currentRune != 0 {
